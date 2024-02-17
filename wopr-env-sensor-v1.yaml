@@ -1,0 +1,95 @@
+substitutions:
+  name: "wopr-env-sensor-v1"
+  friendly_name: "Air Quality"
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  comment: Temperature, Pressure, Humidity, CO2, and Particulate Matter Sensor
+  name_add_mac_suffix: true
+  project:
+    name: triplepoint.air-sensor
+    version: "1.0"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret ha_api_encryption_key
+
+ota:
+  password: !secret ota_api_password
+
+dashboard_import:
+  package_import_url: github://triplepoint/wopr-air-quality-sensor/wopr-env-sensor-v1.yaml@main
+  import_full_config: false
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  domain: !secret device_domain
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    password: !secret captive_portal_password
+
+captive_portal:
+
+####
+
+esp32:
+  board: adafruit_qtpy_esp32s2
+  framework:
+    type: arduino
+
+i2c:
+  sda: 41
+  scl: 40
+  scan: true
+  id: stemma
+
+sensor:
+  - platform: bme280
+    temperature:
+      name: "BME280 Temperature"
+      oversampling: 16x
+    pressure:
+      name: "BME280 Pressure"
+      on_value:
+        then:
+          - lambda: "id(scd41)->set_ambient_pressure_compensation(x);"
+    humidity:
+      name: "BME280 Humidity"
+    address: 0x77
+    update_interval: 60s
+
+  - platform: scd4x
+    id: scd41
+    co2:
+      name: "SCD4X CO2"
+    temperature:
+      name: "SCD4X Temperature"
+    humidity:
+      name: "SCD4X Humidity"
+
+  - platform: pmsa003i
+    pm_1_0:
+      name: "PM1.0"
+    pm_2_5:
+      name: "PM2.5"
+    pm_10_0:
+      name: "PM10.0"
+    pmc_0_3:
+      name: "PMC <0.3µm"
+    pmc_0_5:
+      name: "PMC <0.5µm"
+    pmc_1_0:
+      name: "PMC <1µm"
+    pmc_2_5:
+      name: "PMC <2.5µm"
+    pmc_5_0:
+      name: "PMC <5µm"
+    pmc_10_0:
+      name: "PMC <10µm"
