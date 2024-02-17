@@ -20,7 +20,7 @@ api:
 ota:
 
 dashboard_import:
-  package_import_url: github://triplepoint/wopr-air-quality-sensor/wopr-env-sensor-v1.yaml@main
+  package_import_url: github://triplepoint/wopr-air-quality-sensor/wopr-env-sensor-v1-esp32.yaml@main
   import_full_config: false
 
 wifi:
