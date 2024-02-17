@@ -1,4 +1,3 @@
-# CHANGEME: Set these variable to your liking
-title: ESPHome Project Template
-description: Powered by ESPHome and ESP Web Tools
+title: Wopr Envrionment Sensor
+description: ESPHome Temperature, Pressure, Humidity, CO2, and Particulate Matter Sensor (and sometimes Gas Resistance sensor)
 theme: jekyll-theme-slate

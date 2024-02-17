@@ -1,0 +1,9 @@
+{
+  "chipFamily": "ESP32-S2",
+  "parts": [
+    {
+      "path": "wopr-env-sensor-v1-esp32/wopr-env-sensor-v1-esp32.bin",
+      "offset": 0
+    }
+  ]
+}
