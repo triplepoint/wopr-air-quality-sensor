@@ -10,8 +10,8 @@ jobs:
     strategy:
       matrix:
         file:
-          - wopr-env-sensor-v1.yaml
-          - wopr-env-sensor-v2.yaml
+          - wopr-env-sensor-v1-esp32.yaml
+          - wopr-env-sensor-v2-esp32.yaml
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2

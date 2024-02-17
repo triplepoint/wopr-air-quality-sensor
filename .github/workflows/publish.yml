@@ -9,5 +9,5 @@ jobs:
   build:
     uses: esphome/workflows/.github/workflows/publish.yml@main
     with:
-      files: wopr-env-sensor-v1.yaml,wopr-env-sensor-v2.yaml
+      files: wopr-env-sensor-v1-esp32.yaml,wopr-env-sensor-v2-esp32.yaml
       name: Wopr Environment Sensor
