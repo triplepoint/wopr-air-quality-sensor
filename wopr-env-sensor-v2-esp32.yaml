@@ -41,24 +41,42 @@ i2c:
   id: stemma
 
 sensor:
-  - platform: bme680
+  - platform: bme680_bsec
     temperature:
       name: "BME680 Temperature"
-      oversampling: 16x
+      filters:
+        - median
     pressure:
       name: "BME680 Pressure"
-      on_value:
-        then:
-          - lambda: "id(scd41)->set_ambient_pressure_compensation(x);"
+      id: bme_pressure
+      filters:
+        - median
     humidity:
       name: "BME680 Humidity"
+      filters:
+        - median
     gas_resistance:
       name: "BME680 Gas Resistance"
+      filters:
+        - median
+    iaq:
+      name: "BME680 IAQ"
+      filters:
+        - median
+    iaq_accuracy:
+      name: "BME680 Numeric IAQ Accuracy"
+    co2_equivalent:
+      name: "BME680 CO2 Equivalent"
+      filters:
+        - median
+    breath_voc_equivalent:
+      name: "BME680 Breath VOC Equivalent"
+      filters:
+        - median
     address: 0x77
-    update_interval: 60s
 
   - platform: scd4x
-    id: scd41
+    ambient_pressure_compensation_source: bme_pressure
     co2:
       name: "SCD4X CO2"
     temperature:

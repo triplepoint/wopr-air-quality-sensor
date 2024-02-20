@@ -50,16 +50,14 @@ sensor:
       oversampling: 16x
     pressure:
       name: "BME280 Pressure"
-      on_value:
-        then:
-          - lambda: "id(scd41)->set_ambient_pressure_compensation(x);"
+      id: bme_pressure
     humidity:
       name: "BME280 Humidity"
     address: 0x77
     update_interval: 60s
 
   - platform: scd4x
-    id: scd41
+    ambient_pressure_compensation_source: bme_pressure
     co2:
       name: "SCD4X CO2"
     temperature:
