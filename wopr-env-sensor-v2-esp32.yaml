@@ -41,6 +41,7 @@ i2c:
   id: stemma
 
 bme680_bsec:
+  address: 0x77
 
 sensor:
   - platform: bme680_bsec
@@ -75,7 +76,6 @@ sensor:
       name: "BME680 Breath VOC Equivalent"
       filters:
         - median
-    address: 0x77
 
   - platform: scd4x
     ambient_pressure_compensation_source: bme_pressure
