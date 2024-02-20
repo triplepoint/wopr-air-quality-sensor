@@ -40,6 +40,8 @@ i2c:
   scan: true
   id: stemma
 
+bme680_bsec:
+
 sensor:
   - platform: bme680_bsec
     temperature:
