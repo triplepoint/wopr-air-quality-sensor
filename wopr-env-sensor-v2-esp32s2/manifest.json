@@ -2,7 +2,7 @@
   "chipFamily": "ESP32-S2",
   "ota": {
     "path": "wopr-env-sensor-v2-esp32s2/wopr-env-sensor-v2-esp32s2.ota.bin",
-    "md5": "d249e7e681f14a6b6a549cbfc681f890"
+    "md5": "9745ef3e2b62db15baafdcda88ab4605"
   },
   "parts": [
     {
