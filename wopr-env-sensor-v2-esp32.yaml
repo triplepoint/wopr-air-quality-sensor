@@ -16,6 +16,7 @@ logger:
 api:
 
 ota:
+  platform: esphome
 
 dashboard_import:
   package_import_url: github://triplepoint/wopr-air-quality-sensor/wopr-env-sensor-v2-esp32.yaml@main
@@ -26,6 +27,11 @@ wifi:
     password: "123dontpwnme"
 
 captive_portal:
+
+web_server:
+  port: 80
+  ota: false
+  version: 3
 
 ####
 
