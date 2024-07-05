@@ -6,18 +6,26 @@
   "builds": [
     {
       "chipFamily": "ESP32-S2",
+      "ota": {
+        "path": "wopr-env-sensor-v1-esp32s2/wopr-env-sensor-v1-esp32s2.ota.bin",
+        "md5": "2e90fdaa863809057d5fdcafb379217c"
+      },
       "parts": [
         {
-          "path": "wopr-env-sensor-v1-esp32/wopr-env-sensor-v1-esp32.bin",
+          "path": "wopr-env-sensor-v1-esp32s2/wopr-env-sensor-v1-esp32s2.factory.bin",
           "offset": 0
         }
       ]
     },
     {
       "chipFamily": "ESP32-S2",
+      "ota": {
+        "path": "wopr-env-sensor-v2-esp32s2/wopr-env-sensor-v2-esp32s2.ota.bin",
+        "md5": "d249e7e681f14a6b6a549cbfc681f890"
+      },
       "parts": [
         {
-          "path": "wopr-env-sensor-v2-esp32/wopr-env-sensor-v2-esp32.bin",
+          "path": "wopr-env-sensor-v2-esp32s2/wopr-env-sensor-v2-esp32s2.factory.bin",
           "offset": 0
         }
       ]
