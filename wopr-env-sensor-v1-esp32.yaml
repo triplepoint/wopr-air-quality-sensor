@@ -49,6 +49,8 @@ i2c:
 
 sensor:
   - platform: bme280_i2c
+    address: 0x77
+    update_interval: 60s
     temperature:
       name: "BME280 Temperature"
       oversampling: 16x
@@ -57,11 +59,10 @@ sensor:
       id: bme_pressure
     humidity:
       name: "BME280 Humidity"
-    address: 0x77
-    update_interval: 60s
 
   - platform: scd4x
     ambient_pressure_compensation_source: bme_pressure
+    temperature_offset: 0
     co2:
       name: "SCD4X CO2"
     temperature:

@@ -23,6 +23,7 @@ dashboard_import:
   import_full_config: false
 
 wifi:
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     password: "123dontpwnme"
 
@@ -46,11 +47,23 @@ i2c:
   scan: true
   id: stemma
 
+bme68x_bsec2_i2c:
+  address: 0x77
+  model: bme680
+  operating_age: 28d
+  sample_rate: LP
+  supply_voltage: 3.3V
+  temperature_offset: 6.9
+
+text_sensor:
+  - platform: bme68x_bsec2
+    iaq_accuracy:
+      name: "BME680 IAQ Accuracy"
+
 sensor:
-  - platform: bme680
+  - platform: bme68x_bsec2
     temperature:
       name: "BME680 Temperature"
-      oversampling: 16x
     pressure:
       name: "BME680 Pressure"
       id: bme_pressure
@@ -58,11 +71,13 @@ sensor:
       name: "BME680 Humidity"
     gas_resistance:
       name: "BME680 Gas Resistance"
-    address: 0x77
-    update_interval: 60s
+    iaq_static:
+      name: "BME680 IAQ"
+      id: iaq
 
   - platform: scd4x
     ambient_pressure_compensation_source: bme_pressure
+    temperature_offset: 0
     co2:
       name: "SCD4X CO2"
     temperature:
