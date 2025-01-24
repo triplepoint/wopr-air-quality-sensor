@@ -1,15 +1,13 @@
-substitutions:
+esphome:
   name: "wopr-env-sensor-v2"
   friendly_name: "Air Quality"
-
-esphome:
-  name: "${name}"
-  friendly_name: "${friendly_name}"
   comment: Temperature, Pressure, Humidity, Gas, CO2, and Particulate Matter Sensor
   name_add_mac_suffix: true
-  project:
-    name: triplepoint.air-sensor
-    version: "2.0"
+
+esp32:
+  board: adafruit_qtpy_esp32s2
+  framework:
+    type: arduino
 
 logger:
 
@@ -18,14 +16,8 @@ api:
 ota:
   platform: esphome
 
-dashboard_import:
-  package_import_url: github://triplepoint/wopr-air-quality-sensor/wopr-env-sensor-v2-esp32.yaml@main
-  import_full_config: false
-
 wifi:
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    password: "123dontpwnme"
 
 captive_portal:
 
@@ -35,11 +27,6 @@ web_server:
   version: 3
 
 ####
-
-esp32:
-  board: adafruit_qtpy_esp32s2
-  framework:
-    type: arduino
 
 i2c:
   sda: 41
