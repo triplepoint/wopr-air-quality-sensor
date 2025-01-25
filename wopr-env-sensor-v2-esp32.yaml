@@ -3,6 +3,8 @@ esphome:
   friendly_name: "Air Quality"
   comment: Temperature, Pressure, Humidity, Gas, CO2, and Particulate Matter Sensor
   name_add_mac_suffix: true
+  includes:
+    - aqi_calc.h
 
 esp32:
   board: adafruit_qtpy_esp32s2
@@ -72,13 +74,31 @@ sensor:
     humidity:
       name: "SCD4X Humidity"
 
+    # This template sensor is updated when the pmsa003i's pm_2_5 value updates below
+  - platform: template
+    name: "AQI (pm2.5)"
+    id: pm_2_5_aqi
+
+    # This template sensor is updated when the pmsa003i's pm_10_0 value updates below
+  - platform: template
+    name: "AQI (pm10.0)"
+    id: pm_10_0_aqi
+
   - platform: pmsa003i
     pm_1_0:
       name: "PM1.0"
     pm_2_5:
       name: "PM2.5"
+      on_value:
+        - sensor.template.publish:
+            id: pm_2_5_aqi
+            state: !lambda return aqi_pm2_5(x);
     pm_10_0:
       name: "PM10.0"
+      on_value:
+        - sensor.template.publish:
+            id: pm_10_0_aqi
+            state: !lambda return aqi_pm_10_0(x);
     pmc_0_3:
       name: "PMC <0.3µm"
     pmc_0_5:
