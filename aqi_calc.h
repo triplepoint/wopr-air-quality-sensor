@@ -28,7 +28,7 @@ float aqi_pm2_5(float pm_val) {
         return _aqi_piece(pm_val, 225.5, 325.4, 301.0, 500.0);
     }
     else {
-        return NAN;
+        return 500.0;
     }
 }
 
@@ -55,6 +55,6 @@ float aqi_pm_10_0(float pm_val) {
         return _aqi_piece(pm_val, 425.0, 604.0, 301.0, 500.0);
     }
     else {
-        return NAN;
+        return 500.0;
     }
 }
