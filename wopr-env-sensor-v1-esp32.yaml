@@ -63,11 +63,21 @@ sensor:
   - platform: template
     name: "AQI (pm2.5)"
     id: pm_2_5_aqi
+    update_interval: never
+    state_class: measurement
+    device_class: aqi
+    unit_of_measurement: AQI
+    accuracy_decimals: 0
 
     # This template sensor is updated when the pmsa003i's pm_10_0 value updates below
   - platform: template
     name: "AQI (pm10.0)"
     id: pm_10_0_aqi
+    update_interval: never
+    state_class: measurement
+    device_class: aqi
+    unit_of_measurement: AQI
+    accuracy_decimals: 0
 
   - platform: pmsa003i
     pm_1_0:
@@ -77,13 +87,13 @@ sensor:
       on_value:
         - sensor.template.publish:
             id: pm_2_5_aqi
-            state: !lambda return aqi_pm2_5(x);
+            state: !lambda 'return aqi_pm2_5(x);'
     pm_10_0:
       name: "PM10.0"
       on_value:
         - sensor.template.publish:
             id: pm_10_0_aqi
-            state: !lambda return aqi_pm_10_0(x);
+            state: !lambda 'return aqi_pm_10_0(x);'
     pmc_0_3:
       name: "PMC <0.3µm"
     pmc_0_5:

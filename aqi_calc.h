@@ -1,5 +1,6 @@
 #include <math.h>
 // See: https://document.airnow.gov/technical-assistance-document-for-the-reporting-of-daily-air-quailty.pdf
+// See: https://en.wikipedia.org/wiki/Air_quality_index#Computing_the_AQI
 
 float _aqi_piece(float val, float val_l, float val_h, float aqi_l, float aqi_h) {
     return round(((aqi_h - aqi_l) / (val_h - val_l) * (val - val_l)) + aqi_l);
