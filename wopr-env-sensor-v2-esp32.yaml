@@ -63,7 +63,6 @@ sensor:
     iaq_static:
       name: "BME680 IAQ"
       id: iaq
-      unit_of_measurement: AQI
 
   - platform: scd4x
     ambient_pressure_compensation_source: bme_pressure
@@ -82,7 +81,6 @@ sensor:
     update_interval: never
     state_class: measurement
     device_class: aqi
-    unit_of_measurement: AQI
     accuracy_decimals: 0
 
     # This template sensor is updated when the pmsa003i's pm_10_0 value updates below
@@ -92,7 +90,6 @@ sensor:
     update_interval: never
     state_class: measurement
     device_class: aqi
-    unit_of_measurement: AQI
     accuracy_decimals: 0
 
   - platform: pmsa003i
