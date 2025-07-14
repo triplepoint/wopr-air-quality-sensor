@@ -18,6 +18,9 @@ api:
 ota:
   platform: esphome
 
+network:
+    enable_ipv6: true
+
 wifi:
   ap:
 
